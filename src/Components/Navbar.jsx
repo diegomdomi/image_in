@@ -63,7 +63,7 @@ export default function Navbar() {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */}
           </IconButton>
           <Typography
             variant="h6"
@@ -71,7 +71,7 @@ export default function Navbar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Image_in
           </Typography>
           <Search>
             <SearchIconWrapper>

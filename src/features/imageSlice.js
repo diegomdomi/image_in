@@ -6,11 +6,11 @@ const initialState={
   }
   const accesKey = process.env.REACT_APP_APIKEY;
   const endPoint = process.env.REACT_APP_APIENDPOINT;
-  const query = 'cats'
+  const query = 'random'
 
   export const imageAsync = createAsyncThunk('imageStock/imageAsync', async () => {
     try{
-        const response = await fetch(`${endPoint}?query=${query}&client_id=${accesKey}`)
+        const response = await fetch(`${endPoint}?query=${query}&per_page=50&client_id=${accesKey}`)
         const data = await response.json();
         return [...data.results];
     }catch(err){
@@ -40,4 +40,3 @@ export const selectImg = (state) => state.imageStock.list;
 
   export const { addImages } = imageSlice.actions
   export default imageSlice.reducer
-  

@@ -1,13 +1,20 @@
 import React from 'react';
-import { Search } from './features/imageStock/Search';
-import './App.css';
-import Render from './Components/Render';
+import { Search } from './features/Search.jsx';
+import SearchAppBar from './Components/Navbar.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ImageDetail from './Components/ImageDetail.jsx';
 
 function App() {
   return (
-    <div className="App">
-        <Search />
-    </div>
+    <>
+    <BrowserRouter>
+      <SearchAppBar />
+      <Routes>
+        <Route exact path="/" element={<Search />}/>
+        <Route path='/detail' element={<ImageDetail/>} />
+      </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 

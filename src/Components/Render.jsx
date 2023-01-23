@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
@@ -7,32 +8,32 @@ import ModalImage from './ModalImage';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import './imgStyles.css'
-import useModal from './useModal';
-import { NavLink } from 'react-router-dom';
 
 
 function srcset(image, size, rows = 1, cols = 1) {
   return {
     src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
-    srcSet: `${image}?w=${size * cols}&h=${
-      size * rows
-    }&fit=crop&auto=format&dpr=2 2x`,
+    srcSet: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`,
   };
 }
 
 export default function Render({data}) {
-console.log(data)
-  // const[isOpen,openModal,closeModal]= useModal(false)
-  const[propToModal, setPropToModal] = React.useState()
-  const[isOpen, setIsOpen] = React.useState(false)
-  const openModal =(img,description,profileImg,userName,width,height) => {
+  const[propToModal, setPropToModal] = useState()
+  const[isOpen, setIsOpen] = useState(false)
+
+  const openModal = (img,description,profileImg,userName,width,height) => {
     setPropToModal({img,description,profileImg,userName,width,height});
-    setIsOpen(true)}
+    setIsOpen(true)
+  }
+
   const closeModal =()=>setIsOpen(false)
-    const abrirLike=()=>{
-      localStorage.setItem('myFavorite', JSON.stringify({propToModal}))
-      alert('image save in My Photos')
-    }
+
+  let imgStore=[]
+  const abrirLike=(img,description,width,height)=>{
+    imgStore.push({img,description,width,height})
+    localStorage.setItem('myFavorite', JSON.stringify(imgStore))
+    alert('image save in My Photos')
+  }
 
   return (
     <> 
@@ -43,15 +44,15 @@ console.log(data)
       rowHeight={121}
     >
       {data.map((item) => (
-        <ImageListItem key={item.urls.regular} cols={item.cols || 1} rows={item.rows || 1}>
+        <ImageListItem key={item.id} cols={item.cols || 1} rows={item.rows || 1}>
           <img
             {...srcset(item.urls.regular, 121, item.rows, item.cols)}
-            alt={item.title}
+            alt={item.alt_description}
             loading="lazy"
             onClick={() =>openModal(item.urls.regular,item.alt_description,item.user.profile_image.small,item.user.name,item.width,item.height)}
           />
           <ImageListItemBar
-            title={item.title}
+            title={item.alt_description}
             subtitle={item.author}
             actionIcon={
               <IconButton
@@ -59,7 +60,7 @@ console.log(data)
                 aria-label={`info about ${item.title}`}
               >
                 <CloudDownloadIcon/>
-                <FavoriteBorderIcon  onClick={abrirLike} className="like"/>
+                <FavoriteBorderIcon  onClick={() =>abrirLike(item.urls.regular,item.alt_description,item.width,item.height)} className="like"/>
               </IconButton>
             }
           />

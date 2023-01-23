@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Avatar from '@mui/material/Avatar';
 import './imgStyles.css'
@@ -19,11 +18,7 @@ const style = {
 };
 
 export default function ModalImage({isOpen,propToModal=true,closeModal}) {
-  // const [open, setOpen] = React.useState(false);
 
-  // const handleClose = () => { 
-  //   setOpen(false);
-  // }
   return (
       <div>
       <Modal

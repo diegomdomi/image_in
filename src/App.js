@@ -1,8 +1,7 @@
 import React from 'react';
-import { Search } from './features/Search.jsx';
+import { Search } from './Components/Search';
 import SearchAppBar from './Components/Navbar.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import ImageDetail from './Components/ImageDetail.jsx';
 import MyPhotos from './Components/MyPhotos.jsx';
 import ModalImage from './Components/ModalImage.jsx';
 

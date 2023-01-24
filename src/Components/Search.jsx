@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Render from '../Components/Render'
 import front from '../Assets/front.jpg'
 import './search.css';
-import { imageAsync,selectImg } from './imageSlice';
+import { imageAsync,selectImg } from '../features/imageSlice';
 import { Button } from '@mui/material';
 
 export const Search = () => {
@@ -22,7 +22,6 @@ export const Search = () => {
   const img = useSelector(selectImg)
   const dispatch = useDispatch();
  
-
   const sendQuery = () =>{
     dispatch(imageAsync(inputSearch))
   }

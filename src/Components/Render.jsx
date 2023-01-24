@@ -8,6 +8,8 @@ import ModalImage from './ModalImage';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import './imgStyles.css'
+import  addToMyPhoto  from '../features/favoriteSlice';
+import { useDispatch } from 'react-redux';
 
 
 function srcset(image, size, rows = 1, cols = 1) {
@@ -21,6 +23,8 @@ export default function Render({data}) {
   const[propToModal, setPropToModal] = useState()
   const[isOpen, setIsOpen] = useState(false)
 
+  const dispatch = useDispatch();
+
   const openModal = (img,description,profileImg,userName,width,height) => {
     setPropToModal({img,description,profileImg,userName,width,height});
     setIsOpen(true)
@@ -28,12 +32,25 @@ export default function Render({data}) {
 
   const closeModal =()=>setIsOpen(false)
 
-  let imgStore=[]
-  const abrirLike=(img,description,width,height)=>{
-    imgStore.push({img,description,width,height})
-    localStorage.setItem('myFavorite', JSON.stringify(imgStore))
-    alert('image save in My Photos')
-  }
+//   function abrirLike(id,img,description,width,height) {
+//     if (localStorage) {
+//       let myFavorite;
+//       if (!localStorage['myFavorite']) myFavorite = [];
+//       else myFavorite= JSON.parse(localStorage['myFavorite']);            
+//       if (!(myFavorite instanceof Array)) myFavorite = [];
+//       if((myFavorite.find(user=>user.id === id))){
+//         alert('this image is already saved in your favorites ')
+//       }else{
+//         myFavorite.push({id,img,description,width,height});
+//         localStorage.setItem('myFavorite', JSON.stringify(myFavorite));
+//         alert('image save in My Photos')
+//       }
+//     } 
+// }
+
+const sendToStore = (id,img,description,width,height) => {
+  dispatch(addToMyPhoto({id,img,description,width,height}))
+}
 
   return (
     <> 
@@ -51,16 +68,15 @@ export default function Render({data}) {
             loading="lazy"
             onClick={() =>openModal(item.urls.regular,item.alt_description,item.user.profile_image.small,item.user.name,item.width,item.height)}
           />
-          <ImageListItemBar
+        <ImageListItemBar
             title={item.alt_description}
-            subtitle={item.author}
             actionIcon={
               <IconButton
                 sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
                 aria-label={`info about ${item.title}`}
               >
-                <CloudDownloadIcon/>
-                <FavoriteBorderIcon  onClick={() =>abrirLike(item.urls.regular,item.alt_description,item.width,item.height)} className="like"/>
+              <CloudDownloadIcon/>
+              <FavoriteBorderIcon  onClick={() =>sendToStore(item.id,item.urls.regular,item.alt_description,item.width,item.height)} className="like"/>
               </IconButton>
             }
           />
@@ -71,54 +87,3 @@ export default function Render({data}) {
     </>
   );
 }
-
-// const itemData = [
-//   {
-//     img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-//     title: 'Breakfast',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-//     title: 'Burger',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-//     title: 'Camera',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-//     title: 'Coffee',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-//     title: 'Hats',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-//     title: 'Honey',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-//     title: 'Basketball',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-//     title: 'Fern',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-//     title: 'Mushrooms',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-//     title: 'Tomato basil',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-//     title: 'Sea star',
-//   },
-//   {
-//     img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-//     title: 'Bike',
-//   },
-// ];

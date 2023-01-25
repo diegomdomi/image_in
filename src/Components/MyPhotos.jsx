@@ -5,19 +5,20 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import {disLikePhoto,storeImg} from '../features/favoriteSlice'
 import { useDispatch,useSelector } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Photo from './Photo'
 
 
 const MyPhotos = () => {
 
 let {storeImg} =  useSelector((state) => state.favoriteImage);
+console.log(storeImg)
 const dispatch = useDispatch()
 
 const deleteImage = (id) => {
@@ -26,33 +27,27 @@ const deleteImage = (id) => {
 
   return (
     <>
-     <CssBaseline />
+   
       <Container fixed>
-        <Box sx={{ height: '100vh' }}> 
-        <Grid container spacing={{ xs: 2, md: 3,  }} columns={{ xs: 4, sm: 8, md: 12 }}>
-          {storeImg !== undefined && storeImg && storeImg.map((item)=>(  
-            <Grid item xs={2} sm={2} md={2} key={item.id}>
-            <Card sx={{ maxWidth: 180,marginTop:10,marginBottom:5 }}>
-                  <CardMedia
-                    sx={{ height: 180 }}
-                    image={item.img}
-                  />
-                <CardContent>
-                  <Typography variant="body2" color="text.secondary">
-                    {item.description}
-                  </Typography>
-                </CardContent>
-              <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
-                <FavoriteBorderIcon onClick={()=>deleteImage(item.id)}/>
-              </CardActions>
-            </Card>
+        <Box sx={{ flexGrow: 1 }}> 
+          <TextField  fullWidth label="search by description" id="fullWidth" style={{marginTop:'20px',width:'520px'}}  color="secondary" focused />
+          <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            {storeImg !== undefined && storeImg && storeImg.map((item)=>(  
+              <Grid xs={2} sm={4} md={4} key={item.id}>
+                <Photo key={item.id}
+                       width={item.width}
+                       height={item.height}
+                       likes={item.likes}
+                       id={item.id}
+                       img={item.img} 
+                       description={item.description}
+                       date={item.today}
+                       deleteImage={deleteImage}
+                />
             </Grid>
             ))
           }
           </Grid>
-
         </Box>
       </Container>
     

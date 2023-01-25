@@ -5,6 +5,7 @@ import front from '../Assets/front.jpg'
 import './search.css';
 import { imageAsync,selectImg } from '../features/imageSlice';
 import { Button } from '@mui/material';
+import diafragma from '../Assets/imgdiafragma.png'
 
 export const Search = () => {
 
@@ -28,13 +29,18 @@ export const Search = () => {
 
   return (
     <>
+    <div className="main-container">
       <div className='frontImg' >
         <img src={front} alt='search' style={{height:'480px', width:'100%'}}></img>
       </div>
       <div className="input-container">
         <input className="inputSearch" placeholder="Search your image" name="searchImg" onChange={catchInputField}/>
-        <Button onClick={sendQuery}>search</Button>
+        {/* <span id="icon">
+        <img src={diafragma} alt='diafrafma' className="iconDiafragma" style={{width:'25px'}} />
+      </span> */}
+        <Button onClick={sendQuery} style={{backgroundColor:'orange', color:'black', fontWeight:'bolder'}}  >search</Button>
       </div>
+    </div>
       <Render data={img}/>
     </>
 

@@ -1,10 +1,28 @@
+.main-container{
+    position:relative;
+}
+
 .frontImg{
     /* background-image: url('../front.jpg'), */
     /* background-color: blue; */
 
 }
-
+.input-container{
+    position: absolute;
+    bottom: 200px;
+    left: 50%;
+    transform:translate(-50%)
+}
 .inputSearch{
-    width: 570px;
+    width: 550px;
     height: 40px;
+}
+.iconDiafragma{
+    position: absolute;
+  display: block;
+  bottom: 3rem;
+  right: 1rem;
+  
+  user-select: none;
+  cursor: pointer;
 }

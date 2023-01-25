@@ -8,7 +8,8 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 //import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { NavLink,Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import imgDiaframe from '../Assets/logo-removebg-preview.png'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -73,12 +74,15 @@ export default function Navbar() {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
           <Link to="/">
-            Image_in
+          <img className='imgLogo' style={{width:'150px'}} src={imgDiaframe} alt='logo'/>
           </Link> 
           
             
-            <NavLink to="/myphotos">MY photos</NavLink>
           </Typography>
+            <Link to="/myphotos">
+              <h4>MY photos</h4>
+            </Link>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

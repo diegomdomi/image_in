@@ -25,18 +25,34 @@ export const storeImgSlice = createSlice({
             state.storeImg  = state.storeImg.filter((item) => item.id !== action.payload);
            saveInLocalStorage(state.storeImg)
             
+        },
+
+        editDescription : (state, action) =>{
+            state.storeImg.forEach((item) => {
+                if (item.id === action.payload.id){
+                    item.description = action.payload.description
+            }
+            })
+            saveInLocalStorage(state.storeImg)
         }
     },
+
+    filterByDescription : (state, action) => {
+        state.storeImg = state.storeImg.filter((item)=>item.description === action.payload)
+        saveInLocalStorage(state.storeImg)
+    }
 
        
 
 })
 
-export const storeImg = (state) => state.favoriteImage.storeImg;
+// export const storeImg = (state) => state.favoriteImage.storeImg;
 export default storeImgSlice.reducer
 
 export const {
     addToMyPhoto,
     disLikePhoto,
+    editDescription,
+    filterByDescription,
 } = storeImgSlice.actions
 

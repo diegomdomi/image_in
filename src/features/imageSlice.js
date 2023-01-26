@@ -32,5 +32,5 @@ const initialState={
 
 export const selectImg = (state) => state.imageStock.list;
 
-export const { addImages } = imageSlice.actions
+// export const { addImages } = imageSlice.actions
 export default imageSlice.reducer

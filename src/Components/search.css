@@ -2,11 +2,7 @@
     position:relative;
 }
 
-.frontImg{
-    /* background-image: url('../front.jpg'), */
-    /* background-color: blue; */
 
-}
 .input-container{
     position: absolute;
     bottom: 200px;

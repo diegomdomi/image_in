@@ -24,8 +24,7 @@ export default function ModalImage({isOpen,propToModal=true,closeModal}) {
       <Modal
         open={isOpen}
         onClose={closeModal}
-        // aria-labelledby="modal-modal-title"
-        // aria-describedby="modal-modal-description"
+     
       >
         <Box sx={style}>
           <div className="modal">

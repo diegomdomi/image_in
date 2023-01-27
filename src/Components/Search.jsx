@@ -1,9 +1,9 @@
 import React, { useState,useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Render from '../Components/Render'
 import front from '../Assets/front.jpg'
 import './search.css';
-import { imageAsync,selectImg } from '../features/imageSlice';
+import { imageAsync } from '../features/imageSlice';
 import { Button } from '@mui/material';
 import diafragma from '../Assets/imgdiafragma.png'
 
@@ -20,7 +20,6 @@ export const Search = () => {
       setInputSearch(e.target.value)
     }
   }
-  const img = useSelector(selectImg)
   const dispatch = useDispatch();
  
   const sendQuery = () =>{
@@ -41,7 +40,7 @@ export const Search = () => {
         <Button onClick={sendQuery} style={{backgroundColor:'orange', color:'black', fontWeight:'bolder'}}  >search</Button>
       </div>
     </div>
-      <Render data={img}/>
+      <Render/>
     </>
 
   );

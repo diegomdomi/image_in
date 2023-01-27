@@ -5,10 +5,11 @@ import ImageList from '@mui/material/ImageList';
 import ModalImage from './ModalImage';
 import './imgStyles.css'
 import ShowImage from './ShowImage';
+import { useSelector } from 'react-redux';
 
 
 
-export default function Render({data}) {
+export default function Render() {
   
   const[propToModal, setPropToModal] = useState()
   const[isOpen, setIsOpen] = useState(false)
@@ -18,6 +19,7 @@ export default function Render({data}) {
     setIsOpen(true)
   }
   const closeModal =()=>setIsOpen(false)
+  const img = useSelector(state=>state.imageStock.list)
 
   return (
     <> 
@@ -33,7 +35,7 @@ export default function Render({data}) {
       // cols={4}
       // rowHeight={121}
     >
-      {data.map((item) => (
+      {img.map((item) => (
         <ShowImage id={item.id}
                    img={item.urls.small}
                    alt_description={item.alt_description}

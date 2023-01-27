@@ -19,6 +19,7 @@ export const storeImgSlice = createSlice({
                 state.storeImg = [...state.storeImg, action.payload ];
             }
             saveInLocalStorage(state.storeImg)
+
         },
 
         disLikePhoto: (state, action) => {
@@ -34,13 +35,23 @@ export const storeImgSlice = createSlice({
             }
             })
             saveInLocalStorage(state.storeImg)
+        },
+
+            filterByDescription : (state, action) => {
+                
+                let newFilter = state.storeImg.filter((item) => item.description && item.description.toLowerCase().includes(action.payload.toLowerCase()))
+                state.storeImg = JSON.parse(localStorage.getItem('myFavorite'))
+                
+                if (action.payload !=='') {
+                    state.storeImg = newFilter
+
+                } 
+                
+
+                
         }
     },
 
-    filterByDescription : (state, action) => {
-        state.storeImg = state.storeImg.filter((item)=>item.description === action.payload)
-        saveInLocalStorage(state.storeImg)
-    }
 
        
 

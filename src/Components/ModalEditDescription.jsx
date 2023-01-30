@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux';
 
 const ModalEditDescription = ({isOpen,closeModal,id}) => {
     const [description, setDescription] = useState ()
-
 const dispatch = useDispatch()
 
 const registerChangeInput =(e)=>{

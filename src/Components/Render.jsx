@@ -13,14 +13,15 @@ export default function Render() {
   
   const[propToModal, setPropToModal] = useState()
   const[isOpen, setIsOpen] = useState(false)
+  console.log(propToModal);
 
-  const openModal = (img,description,profileImg,userName,width,height) => {
-    setPropToModal({img,description,profileImg,userName,width,height});
+  const openModal = (img,description,profileImg,userName) => {
+    setPropToModal({img,description,profileImg,userName});
     setIsOpen(true)
   }
   const closeModal =()=>setIsOpen(false)
   const img = useSelector(state=>state.imageStock.list)
-
+  
   return (
     <> 
    <Container> 
@@ -38,6 +39,7 @@ export default function Render() {
       {img.map((item) => (
         <ShowImage id={item.id}
                    img={item.urls.small}
+                   urlFull={item.urls.full}
                    alt_description={item.alt_description}
                    width={item.width}
                    height={item.height}

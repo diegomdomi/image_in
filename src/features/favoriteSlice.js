@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
      storeImg : JSON.parse(localStorage.getItem('myFavorite')) || [],
-}
+    }
 
 const saveInLocalStorage = (store) => {
     localStorage.setItem('myFavorite', JSON.stringify(store))
@@ -38,26 +38,20 @@ export const storeImgSlice = createSlice({
         },
 
             filterByDescription : (state, action) => {
+                const inputDescription = action.payload;
+                state.storeImg = JSON.parse(localStorage.getItem('myFavorite')) || []
                 
-                let newFilter = state.storeImg.filter((item) => item.description && item.description.toLowerCase().includes(action.payload.toLowerCase()))
-                state.storeImg = JSON.parse(localStorage.getItem('myFavorite'))
-                
-                if (action.payload !=='') {
-                    state.storeImg = newFilter
-
+                if (inputDescription && inputDescription !=='') {
+                    state.storeImg =  state.storeImg.filter((item) => item.description && item.description.toLowerCase().includes(inputDescription.toLowerCase()))
                 } 
-                
+        },
 
+           
                 
-        }
     },
-
-
-       
 
 })
 
-// export const storeImg = (state) => state.favoriteImage.storeImg;
 export default storeImgSlice.reducer
 
 export const {

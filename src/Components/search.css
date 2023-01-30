@@ -1,7 +1,13 @@
 .main-container{
     position:relative;
 }
-
+/* h4{
+    color:white;
+    font-family: roboto;
+} */
+.css-hip9hq-MuiPaper-root-MuiAppBar-root{
+    background-color: r#062039 !important;
+}
 
 .input-container{
     position: absolute;
@@ -12,6 +18,8 @@
 .inputSearch{
     width: 550px;
     height: 40px;
+    border-radius: 24px;
+    padding-left: 30px;
 }
 .iconDiafragma{
     position: absolute;

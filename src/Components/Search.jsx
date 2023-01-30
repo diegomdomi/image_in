@@ -37,7 +37,7 @@ export const Search = () => {
         {/* <span id="icon">
         <img src={diafragma} alt='diafrafma' className="iconDiafragma" style={{width:'25px'}} />
       </span> */}
-        <Button onClick={sendQuery} style={{backgroundColor:'orange', color:'black', fontWeight:'bolder'}}  >search</Button>
+        <Button onClick={sendQuery} style={{backgroundColor:'darkorange', color:'black', fontWeight:'bolder', marginLeft:'8px'}}  >search</Button>
       </div>
     </div>
       <Render/>

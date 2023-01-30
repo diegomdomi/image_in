@@ -14,38 +14,38 @@ function srcset(image, size, rows = 1, cols = 1) {
       srcSet: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`,
     };
   }
-const ShowImage = ({id,img,alt_description,width,height,imgAvatar,userName,openModal,likes}) => {
+  const ShowImage = ({id,img,alt_description,width,height,imgAvatar,userName,openModal,likes,urlFull}) => {
     let now = new Date();
     let today = now.toLocaleString()
 
-    const dispatch = useDispatch();
-    const sendToStore = (id,img,description,width,height,likes) => {
-        dispatch(addToMyPhoto({id,img,description,width,height,today,likes}))
-      }
+  const dispatch = useDispatch();
+  const sendToStore = (id,img,description,width,height,likes,urlFull) => {
+      dispatch(addToMyPhoto({id,img,description,width,height,today,likes,urlFull}))
+    }
 
   return (
     // <ImageListItem key={id} cols={img.cols || 1} rows={img.rows || 1}>
-    <ImageListItem key={id} sx={{heigth :'80% !important'}}>
+    <ImageListItem key={id} sx={{heigth :'80% '}}>
       <img
         {...srcset(img, 121, img.rows, img.cols)}
         alt={alt_description}
         loading="lazy"
         onClick={() =>openModal(img,alt_description,imgAvatar,userName)}
       />
-    <ImageListItemBar
+      <ImageListItemBar
       title={alt_description}
       actionIcon={
-        <IconButton
-          sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-        >
-        <CloudDownloadIcon/>
-        <Button  onClick={() =>sendToStore(id,img,alt_description,width,height,likes)} className="like">
-        <FavoriteBorderIcon />
-        </Button>
-        </IconButton>
+      <IconButton
+        sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+      >
+      <CloudDownloadIcon/>
+      <Button  onClick={() =>sendToStore(id,img,alt_description,width,height,likes,urlFull)} className="like">
+      <FavoriteBorderIcon />
+      </Button>
+      </IconButton>
       }
-    />
-  </ImageListItem>
+      />
+    </ImageListItem>
   )
 }
 

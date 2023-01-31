@@ -23,7 +23,8 @@ export const storeImgSlice = createSlice({
         },
 
         disLikePhoto: (state, action) => {
-            state.storeImg  = state.storeImg.filter((item) => item.id !== action.payload);
+            state.storeImg = JSON.parse(localStorage.getItem('myFavorite')) || []
+            state.storeImg  = [...state.storeImg].filter((item) => item.id !== action.payload);
            saveInLocalStorage(state.storeImg)
             
         },

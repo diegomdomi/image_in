@@ -13,32 +13,28 @@ export default function Render() {
   
   const[propToModal, setPropToModal] = useState()
   const[isOpen, setIsOpen] = useState(false)
-  console.log(propToModal);
-
+  
   const openModal = (img,description,profileImg,userName) => {
     setPropToModal({img,description,profileImg,userName});
     setIsOpen(true)
   }
   const closeModal =()=>setIsOpen(false)
-  const img = useSelector(state=>state.imageStock.list)
+  const storeImg= useSelector(state=>state.imageStock.list)
+  console.log(storeImg);
   
   return (
     <> 
-   <Container> 
+   {/* <Container>  */}
     <ImageList
-    gap={12}
-    sx={{mb:8,
-    gridTemplateColumns:
-    'repeat(auto-fill, minmax(180px, 1fr)) !important'
+      gap={20}
+      sx={{m:6,
+      gridTemplateColumns:
+      'repeat(auto-fill, minmax(280px, 1fr)) !important'
     }}
-      // sx={{ width: 500, height: 450 }}
-      // variant="quilted"
-      // cols={4}
-      // rowHeight={121}
     >
-      {img.map((item) => (
+      {storeImg.map((item) => (
         <ShowImage id={item.id}
-                   img={item.urls.small}
+                   img={item.urls.small_s3}
                    urlFull={item.urls.full}
                    alt_description={item.alt_description}
                    width={item.width}
@@ -51,7 +47,7 @@ export default function Render() {
       ))}
     </ImageList>
     <ModalImage isOpen={isOpen} propToModal={propToModal} closeModal={closeModal}/>
-    </Container>
+    {/* </Container> */}
     </>
   );
 }

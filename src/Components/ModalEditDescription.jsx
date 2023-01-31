@@ -27,7 +27,18 @@ const handleChangeDescription = (id,description)=>{
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: '400',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+  const stylemb = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '80%',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -41,7 +52,7 @@ const handleChangeDescription = (id,description)=>{
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style} xs={stylemb}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Edit description
           </Typography>

@@ -6,19 +6,20 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import ImageListItem from '@mui/material/ImageListItem';
+
 import Typography from '@mui/material/Typography';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ModalEditDescription from './ModalEditDescription';
 import { disLikePhoto } from '../features/favoriteSlice';
 import { useDispatch } from 'react-redux';
-
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
 
     const[isOpen, setIsOpen] = useState(false)
     const dispatch = useDispatch()
-    
+
     const editDescription = () =>{
         setIsOpen(true)
     }
@@ -33,32 +34,36 @@ const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
   }
   return (
     <div>
-        <Card sx={{marginTop:10, maxWidth: 345 }}>
+      <ImageListItem key={id} sx={{px:2}}>
+
+        <Card sx={{marginTop:10,mb:{md:10,xs:1}}}>
                   <CardMedia
                     sx={{ height: 380 }}
                     image={img}
                     id={id}
                   />
-                <CardContent>
-                  <Typography variant="body2" color="text.secondary">
-                    {description}
+                <CardContent sx={{height:250}}>
+                  <Typography variant="body1" color="text.secondary">
+                  <h5>{description}</h5> 
                   <h4>width:  {width}  px</h4>
                   <h4>height: {height} px</h4>
                   <h4>{date}</h4>
-                  <h4><ThumbUpAltIcon /> {likes}</h4>
+                  <h4><ThumbUpAltIcon/> {likes}</h4>
                   </Typography>
                 </CardContent>
               <CardActions>
                 <Button size="small" onClick={editDescription}>Edit description</Button>
-                <Button size="small" onClick={saveFile}>
-                <CloudDownloadIcon/>
+                <Button size="small">
+                <CloudDownloadIcon  onClick={saveFile}/>
                 </Button>
-                <Button size="small" onClick={()=>deleteImage(id)}>
-                <FavoriteBorderIcon />
+                <Button size="small" >
+                <DeleteForeverIcon onClick={()=>deleteImage(id)}/>
                 </Button>
               </CardActions>
-            <ModalEditDescription isOpen={isOpen}  closeModal={closeModal} id={id}/>
+            <ModalEditDescription isOpen={isOpen} img={img}  closeModal={closeModal} id={id}/>
             </Card>
+    </ImageListItem>
+
     </div>
   )
 }

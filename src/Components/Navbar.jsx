@@ -6,10 +6,12 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-//import MenuIcon from '@mui/icons-material/Menu';
+import Button from '@mui/material/Button';
+import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
-import imgDiaframe from '../Assets/logo-removebg-preview.png'
+import imgDiaframe from '../Assets/1logo.png'
+import { red } from '@mui/material/colors';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -54,44 +56,45 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+
+
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed"  sx={{ bgcolor: '#000000' }}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            {/* <MenuIcon /> */}
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ flexGrow: 1, ml:{lg:10}}}
           >
           <Link to="/">
-          <img className='imgLogo' style={{width:'150px'}} src={imgDiaframe} alt='logo'/>
+            <img className='imgLogo' style={{width:'170px'}} src={imgDiaframe} alt='logo'/>
           </Link> 
-          
-            
           </Typography>
+          <div className='navMenu'>
             <Link to="/myphotos">
-              <h4>MY photos</h4>
+              <Button>
+                <Typography variant="h6" color="inherit" component="div"
+                  sx={{ flexGrow: 1, alignSelf: 'flex-end',textDecoration:'none'}}
+                >
+                  MY photos
+                </Typography>
+              </Button>
             </Link>
+            <Link to="/">
+              <Button>
+              <Typography variant="h6" color="inherit" component="div"
+                  sx={{ flexGrow: 1, alignSelf: 'flex-end',textDecoration:'none'}}
+                >
+                 Menu
+                 </Typography>
+              </Button>
+            </Link>
+          </div>
 
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+     
         </Toolbar>
       </AppBar>
     </Box>

@@ -33,13 +33,13 @@ export const Search = () => {
       <Grid item xs={12} sm={8} md={6} sx={{mt:{sm:15,md:15},ml:{sm:20}}} >
         <Box m={6}>
         <div className="title-container" >
-          <h1>Surf, Travel and Download your favorite Pictures from <span> Imagine_surfing</span></h1>
+          <h1>Surf, Travel and Download your favorite Pictures from <span> Image_surfing</span></h1>
           <p className="description-container">We provide a simple and easy-to-use platform for downloading images. Start downloading images today 
           and take the first step towards creating beautiful and engaging content.</p>
         </div>
         </Box>
       </Grid>
-      <Grid item xs={12} sm={8} md={6}  sx={{mt:{sm:5,lg:20},ml:{sm:20 }}}>
+      <Grid item xs={12} sm={8} md={6}  sx={{mt:{sm:5,lg:17},ml:{sm:20 }}}>
         <Box m={5} >
       <div className="input-container">
         <input className="inputSearch" placeholder="Search your image" name="searchImg" onChange={catchInputField}/>

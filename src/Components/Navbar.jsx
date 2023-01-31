@@ -77,7 +77,7 @@ export default function Navbar() {
             <Link to="/myphotos">
               <Button>
                 <Typography variant="h6" color="inherit" component="div"
-                  sx={{ flexGrow: 1, alignSelf: 'flex-end',textDecoration:'none'}}
+                  sx={{ flexGrow: 1, alignSelf: 'flex-end',textDecoration:'none',fontSize:{xs:15,md:20}}}
                 >
                   MY photos
                 </Typography>
@@ -86,7 +86,7 @@ export default function Navbar() {
             <Link to="/">
               <Button>
               <Typography variant="h6" color="inherit" component="div"
-                  sx={{ flexGrow: 1, alignSelf: 'flex-end',textDecoration:'none'}}
+                  sx={{ flexGrow: 1, alignSelf: 'flex-end',textDecoration:'none', display:{xs:'none',md:'block'}}}
                 >
                  Menu
                  </Typography>

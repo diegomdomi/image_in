@@ -12,6 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import imgDiaframe from '../Assets/1logo.png'
 import { red } from '@mui/material/colors';
+import { useLocation } from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -55,9 +56,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Navbar() {
+const Navbar = () => {
+  const location = useLocation();
 
-
+  const mainRoute = location.pathname
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -69,34 +71,27 @@ export default function Navbar() {
             component="div"
             sx={{ flexGrow: 1, ml:{lg:10}}}
           >
+          {/* <div>
+            <p style={{fontFamily:'Teko', fontSize:'25px',letterSpacing:'1.5px'}}> image_surfing</p>
+          </div> */}
           <Link to="/">
             <img className='imgLogo' style={{width:'170px'}} src={imgDiaframe} alt='logo'/>
           </Link> 
           </Typography>
           <div className='navMenu'>
-            <Link to="/myphotos">
-              <Button>
-                <Typography variant="h6" color="inherit" component="div"
-                  sx={{ flexGrow: 1, alignSelf: 'flex-end',textDecoration:'none',fontSize:{xs:15,md:20}}}
-                >
-                  MY photos
+            <Link to={mainRoute === '/' ? '/myphotos' : '/'} style={{textDecoration:'none'}}>
+              <Button  sx={{backgroundColor:'pink', color:'white', fontWeight:'bolder'}}>
+                <Typography  color="inherit" component="div">
+                {mainRoute === '/' ? ' MY photos' : 'Menu'}
                 </Typography>
               </Button>
-            </Link>
-            <Link to="/">
-              <Button>
-              <Typography variant="h6" color="inherit" component="div"
-                  sx={{ flexGrow: 1, alignSelf: 'flex-end',textDecoration:'none', display:{xs:'none',md:'block'}}}
-                >
-                 Menu
-                 </Typography>
-              </Button>
-            </Link>
+            </Link> 
           </div>
-
-     
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
+
+
+export default Navbar

@@ -4,7 +4,6 @@ import Render from '../Components/Render'
 import './search.css';
 import { imageAsync } from '../features/imageSlice';
 import { Button,Box,Grid,Container } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
 import Pagination from '@mui/material/Pagination';
 
 export const Search = () => {
@@ -34,7 +33,6 @@ const handleChangePage = (e, value) => {
   //   }, [inputSearch,page, dispatch])
   return (
     <>
-    {/* <CssBaseline /> */}
     <Grid container>
     <div className="main-container">
       <Grid item xs={12} sm={8} md={6} sx={{mt:{sm:15,md:15},ml:{sm:20}}} >
@@ -50,7 +48,7 @@ const handleChangePage = (e, value) => {
         <Box m={5} >
       <div className="input-container">
         <input className="inputSearch" placeholder="Search your image" name="searchImg" onChange={catchInputField}/>
-        <Button onClick={sendQuery} style={{backgroundColor:'darkorange', color:'black', fontWeight:'bolder', marginLeft:'8px'}}  >search</Button>
+        <Button onClick={sendQuery} style={{backgroundColor:'darkpink', color:'black', fontWeight:'bolder', marginLeft:'8px'}}  >surf</Button>
       </div>
 
         </Box>

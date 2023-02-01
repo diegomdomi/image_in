@@ -3,15 +3,11 @@ import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Button from '@mui/material/Button';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import imgDiaframe from '../Assets/1logo.png'
-import { red } from '@mui/material/colors';
 import { useLocation } from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({
@@ -80,7 +76,7 @@ const Navbar = () => {
           </Typography>
           <div className='navMenu'>
             <Link to={mainRoute === '/' ? '/myphotos' : '/'} style={{textDecoration:'none'}}>
-              <Button  sx={{backgroundColor:'pink', color:'white', fontWeight:'bolder'}}>
+              <Button  sx={{backgroundColor:'#f52246', color:'white', fontWeight:'bolder'}}>
                 <Typography  color="inherit" component="div">
                 {mainRoute === '/' ? ' MY photos' : 'Menu'}
                 </Typography>

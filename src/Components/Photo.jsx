@@ -51,15 +51,15 @@ const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
                   <h4><ThumbUpAltIcon/> {likes}</h4>
                   </Typography>
                 </CardContent>
-              <CardActions>
-                <Button size="small" onClick={editDescription}>Edit description</Button>
-                <Button size="small">
-                <CloudDownloadIcon  onClick={saveFile}/>
-                </Button>
-                <Button size="small" >
-                <DeleteForeverIcon onClick={()=>deleteImage(id)}/>
-                </Button>
-              </CardActions>
+                <CardActions>
+                  <Button size="small" onClick={editDescription}>Edit description</Button>
+                  <Button size="small">
+                  <CloudDownloadIcon  onClick={saveFile}/>
+                  </Button>
+                  <Button size="small" >
+                  <DeleteForeverIcon onClick={()=>deleteImage(id)}/>
+                  </Button>
+                </CardActions>
             <ModalEditDescription isOpen={isOpen} img={img}  closeModal={closeModal} id={id}/>
             </Card>
     </ImageListItem>

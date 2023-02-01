@@ -48,7 +48,7 @@ const handleChangePage = (e, value) => {
         <Box m={5} >
       <div className="input-container">
         <input className="inputSearch" placeholder="Search your image" name="searchImg" onChange={catchInputField}/>
-        <Button onClick={sendQuery} style={{backgroundColor:'darkpink', color:'black', fontWeight:'bolder', marginLeft:'8px'}}  >surf</Button>
+        <Button onClick={sendQuery} style={{backgroundColor:'#ffc300', color:'black', fontWeight:'bolder', marginLeft:'8px'}}  >surf</Button>
       </div>
 
         </Box>

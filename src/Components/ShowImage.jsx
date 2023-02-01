@@ -66,10 +66,10 @@ function srcset(img, size, rows = 1, cols = 1) {
       </IconButton>
       }
       />
-          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-        <Alert  severity="success" sx={{ width: '100%' }}>
-          Image saved in 'My Photos'!
-        </Alert>
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} >
+          <Alert  severity="success" sx={{ width: '100%',my:100 }}>
+            Image saved in 'My Photos'!
+          </Alert>
       </Snackbar>
     </ImageListItem>
   )

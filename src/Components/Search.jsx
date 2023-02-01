@@ -5,14 +5,18 @@ import './search.css';
 import { imageAsync } from '../features/imageSlice';
 import { Button,Box,Grid,Container } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
+import Pagination from '@mui/material/Pagination';
 
 export const Search = () => {
 
   const [inputSearch, setInputSearch] = useState(null)
 
-// useEffect(() => {
-// dispatch(imageAsync(inputSearch))
-// }, [])
+
+const [ page, setPage ] = useState(1);
+console.log(page);
+const handleChangePage = (e, value) => {
+    setPage(value);
+}
 
   const catchInputField = (e) =>{
     if(e.target.name === 'searchImg'){
@@ -22,9 +26,12 @@ export const Search = () => {
   const dispatch = useDispatch();
  
   const sendQuery = () =>{
-    dispatch(imageAsync(inputSearch))
+    dispatch(imageAsync(inputSearch,page))
   }
 
+  // useEffect(() => {
+  //   dispatch(imageAsync(inputSearch))
+  //   }, [inputSearch,page, dispatch])
   return (
     <>
     {/* <CssBaseline /> */}
@@ -33,7 +40,7 @@ export const Search = () => {
       <Grid item xs={12} sm={8} md={6} sx={{mt:{sm:15,md:15},ml:{sm:20}}} >
         <Box m={6}>
         <div className="title-container" >
-          <h1>Surf, Travel and Download your favorite Pictures from <span> Image_surfing</span></h1>
+          <h1>Surf, Travel and Download your favorite Pictures from <span className='image-surfing'> Image_surfing</span></h1>
           <p className="description-container">We provide a simple and easy-to-use platform for downloading images. Start downloading images today 
           and take the first step towards creating beautiful and engaging content.</p>
         </div>
@@ -50,7 +57,13 @@ export const Search = () => {
       </Grid>
     </div>
     </Grid>
-      <Render/>
+      <Render page={page} onChange={handleChangePage}/>
+      <Box justifyContent={'center'} alignItems='center' display={'flex'}
+      sx={{
+        margin:'20px 0px'
+      }}>
+        <Pagination page={page} onChange={handleChangePage} count={3} variant="outlined" color="primary" />
+      </Box>
     </>
 
   );

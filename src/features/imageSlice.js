@@ -8,8 +8,8 @@ const initialState={
 
   export const imageAsync = createAsyncThunk(
     'imageStock/imageAsync',
-      async (param) => {
-        return await apiCall(param)
+      async (param,page) => {
+        return await apiCall(param,page)
     })
 
 

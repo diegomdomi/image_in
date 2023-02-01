@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 
 
 
+
 export default function Render() {
   
   const[propToModal, setPropToModal] = useState()
@@ -20,7 +21,6 @@ export default function Render() {
   }
   const closeModal =()=>setIsOpen(false)
   const storeImg= useSelector(state=>state.imageStock.list)
-  console.log(storeImg);
   
   return (
     <> 
@@ -47,6 +47,7 @@ export default function Render() {
       ))}
     </ImageList>
     <ModalImage isOpen={isOpen} propToModal={propToModal} closeModal={closeModal}/>
+
     {/* </Container> */}
     </>
   );

@@ -4,19 +4,20 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 import Avatar from '@mui/material/Avatar';
-import './imgStyles.css'
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '80%',
+  width:{xs:'70%',sm:'45%',md:'30%',lg:'25%'},
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p: 4,
+  padding: 4,
 };
+
+
 
 export default function ModalImage({isOpen,propToModal=true,closeModal}) {
   const {img,description, userName,profileImg} = propToModal
@@ -27,20 +28,22 @@ export default function ModalImage({isOpen,propToModal=true,closeModal}) {
         open={isOpen}
         onClose={closeModal}
       >
-      <Box sx={style}>
-        <CloseIcon onClick={closeModal}/>
+      <Box  display={'flex'} flexDirection='column'
+        sx={style}
+      >
+      <CloseIcon onClick={closeModal}/>
         <div className="modal">
           <p className="modalDescription"> 
             {description}
           </p>
-            <img src={img} alt={description} style={{maxWidth:'350px'}}/>
-          <div className="avatar">
+            <img src={img} alt={description} style={{width:'100%'}}/>
+          <Box display={'flex'} flexDirection='row' alignItems='center' sx={{mt:2}}>
             <Avatar
               alt={userName}
               src={profileImg}
             />
-            <p>{userName}</p>
-          </div>
+            <p style={{marginLeft:'10px'}}>{userName}</p>
+          </Box>
         </div>
       </Box>
       </Modal>

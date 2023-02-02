@@ -8,11 +8,10 @@ import Pagination from '@mui/material/Pagination';
 
 export const Search = () => {
 
-  const [inputSearch, setInputSearch] = useState(null)
+const [inputSearch, setInputSearch] = useState(null)
 
-
+console.log(inputSearch);
 const [ page, setPage ] = useState(1);
-console.log(page);
 const handleChangePage = (e, value) => {
     setPage(value);
 }
@@ -30,7 +29,7 @@ const handleChangePage = (e, value) => {
 
   // useEffect(() => {
   //   dispatch(imageAsync(inputSearch))
-  //   }, [inputSearch,page, dispatch])
+  //   },[inputSearch,page, dispatch])
 
   return (
     <>
@@ -63,7 +62,9 @@ const handleChangePage = (e, value) => {
       sx={{
         margin:'20px 0px'
       }}>
+      { !inputSearch &&
         <Pagination page={page} onChange={handleChangePage} count={3} variant="outlined" color="primary" />
+      }
       </Box>
     </>
 

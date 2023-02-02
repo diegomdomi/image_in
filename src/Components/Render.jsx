@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useState } from 'react';
 import ImageList from '@mui/material/ImageList';
 import ModalImage from './ModalImage';
-import './imgStyles.css'
 import ShowImage from './ShowImage';
 import { useSelector } from 'react-redux';
 import CircularProgress from '@mui/material/CircularProgress';

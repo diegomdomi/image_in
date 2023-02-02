@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import ImageListItem from '@mui/material/ImageListItem';
-
 import Typography from '@mui/material/Typography';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -15,6 +14,7 @@ import ModalEditDescription from './ModalEditDescription';
 import { disLikePhoto } from '../features/favoriteSlice';
 import { useDispatch } from 'react-redux';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
 
     const[isOpen, setIsOpen] = useState(false)
@@ -38,7 +38,7 @@ const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
 
         <Card sx={{marginTop:10,mb:{md:10,xs:1}}}>
                   <CardMedia
-                    sx={{ height: 380 }}
+                    sx={{ height:300 }}
                     image={img}
                     id={id}
                   />

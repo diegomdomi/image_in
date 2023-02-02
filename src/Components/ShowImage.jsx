@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import { saveAs } from 'file-saver';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
@@ -21,28 +22,31 @@ function srcset(img, size, rows = 1, cols = 1) {
       srcSet: `${img}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`,
     };
   }
-  const ShowImage = ({id,img,alt_description,width,height,imgAvatar,userName,openModal,likes,urlFull}) => {
-    const [open, setOpen] = React.useState(false);
+const ShowImage = ({id,img,alt_description,width,height,imgAvatar,userName,openModal,likes,urlFull}) => {
+  const [state, setState] = useState({
+      open: false,
+      vertical: 'top',
+      horizontal: 'center',
+    });
+    
+  const { vertical, horizontal, open } = state;
 
-    let now = new Date();
-    let today = now.toLocaleString()
+  let now = new Date();
+  let today = now.toLocaleString()
 
   const dispatch = useDispatch();
   const sendToStore = (id,img,description,width,height,likes,urlFull) => {
       dispatch(addToMyPhoto({id,img,description,width,height,today,likes,urlFull}))
-      setOpen(true);
+      setState({ open: true,vertical:'top',horizontal:'center' })
     }
 
-    
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
 
-    setOpen(false);
+  const handleClose = () => {
+    setState({ ...state, open: false });
   };
-    const saveFile = () => {
-      saveAs(urlFull, `${id}.jpg`);
+
+  const saveFile = () => {
+    saveAs(urlFull, `${id}.jpg`);
   }
 
   return (
@@ -66,8 +70,9 @@ function srcset(img, size, rows = 1, cols = 1) {
       </IconButton>
       }
       />
-        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} >
-          <Alert  severity="success" sx={{ width: '100%',my:100 }}>
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} 
+        anchorOrigin={{ vertical, horizontal }}>
+          <Alert  severity="success" sx={{ width: '100%',mt:10}}>
             Image saved in 'My Photos'!
           </Alert>
       </Snackbar>

@@ -31,6 +31,7 @@ const handleChangePage = (e, value) => {
   // useEffect(() => {
   //   dispatch(imageAsync(inputSearch))
   //   }, [inputSearch,page, dispatch])
+
   return (
     <>
     <Grid container>
@@ -50,11 +51,13 @@ const handleChangePage = (e, value) => {
         <input className="inputSearch" placeholder="Search your image" name="searchImg" onChange={catchInputField}/>
         <Button onClick={sendQuery} style={{backgroundColor:'#ffc300', color:'black', fontWeight:'bolder', marginLeft:'8px'}}  >surf</Button>
       </div>
-
         </Box>
       </Grid>
     </div>
     </Grid>
+    {
+
+    }
       <Render page={page} onChange={handleChangePage}/>
       <Box justifyContent={'center'} alignItems='center' display={'flex'}
       sx={{

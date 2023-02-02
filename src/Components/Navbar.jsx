@@ -75,10 +75,10 @@ const Navbar = () => {
           </Link> 
           </Typography>
           <div className='navMenu'>
-            <Link to={mainRoute === '/' ? '/myphotos' : '/'} style={{textDecoration:'none'}}>
+            <Link to={(mainRoute === '/') ? '/myphotos' : '/'} style={{textDecoration:'none'}}>
               <Button  sx={{backgroundColor:'#f52246', color:'white', fontWeight:'bolder'}}>
                 <Typography  color="inherit" component="div">
-                {mainRoute === '/' ? ' MY photos' : 'Menu'}
+                {(mainRoute === '/') ? ' MY photos' : 'Menu'}
                 </Typography>
               </Button>
             </Link> 

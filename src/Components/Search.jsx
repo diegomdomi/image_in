@@ -3,17 +3,23 @@ import { useDispatch } from 'react-redux';
 import Render from '../Components/Render'
 import './search.css';
 import { imageAsync } from '../features/imageSlice';
-import { Button,Box,Grid,Container } from '@mui/material';
+import { Button,Box,Grid } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
+import { useSelector } from 'react-redux';
+
 
 export const Search = () => {
 
 const [inputSearch, setInputSearch] = useState(null)
+const dispatch = useDispatch();
 
-console.log(inputSearch);
-const [ page, setPage ] = useState(1);
-const handleChangePage = (e, value) => {
-    setPage(value);
+// const {loading, error} = useSelector(state => state.imageStock)
+
+const [ value, setValue ] = useState(1);
+
+const handleChangePage = (e, valu) => {
+    dispatch(imageAsync({inputSearch,valu}))
+    setValue(valu);
 }
 
   const catchInputField = (e) =>{
@@ -21,15 +27,14 @@ const handleChangePage = (e, value) => {
       setInputSearch(e.target.value)
     }
   }
-  const dispatch = useDispatch();
  
   const sendQuery = () =>{
-    dispatch(imageAsync(inputSearch,page))
+    dispatch(imageAsync({inputSearch,value}))
   }
 
-  // useEffect(() => {
-  //   dispatch(imageAsync(inputSearch))
-  //   }, [inputSearch,page, dispatch])
+  useEffect(() => {
+    dispatch(imageAsync({inputSearch,value}))
+    }, [inputSearch,value, dispatch])
 
   return (
     <>
@@ -57,14 +62,12 @@ const handleChangePage = (e, value) => {
     {
 
     }
-      <Render page={page} onChange={handleChangePage}/>
+      <Render />
       <Box justifyContent={'center'} alignItems='center' display={'flex'}
       sx={{
         margin:'20px 0px'
       }}>
-      { !inputSearch &&
-        <Pagination page={page} onChange={handleChangePage} count={3} variant="outlined" color="primary" />
-      }
+      <Pagination page={value} onChange={handleChangePage} count={3} variant="outlined" color="primary" />
       </Box>
     </>
 

@@ -5,7 +5,8 @@ import ModalImage from './ModalImage';
 import ShowImage from './ShowImage';
 import { useSelector } from 'react-redux';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
 const Render = () => {
   
@@ -21,6 +22,11 @@ const Render = () => {
   
   return (
     <> 
+      {storeImg.length === 0 &&
+      <Box  sx={{ display: 'flex', flexDirection:'column' ,alignItems:'center',mt:5}} >
+        <CircularProgress />
+       <p style={{marginLeft:'10px'}}>loading images</p>
+      </Box>}
     <ImageList
       gap={20}
       sx={{m:6,
@@ -28,10 +34,7 @@ const Render = () => {
       'repeat(auto-fill, minmax(280px, 1fr)) !important'
     }}
     >
-      { !storeImg ?
-        <CircularProgress />
-        :
-      storeImg.map((item) => (
+     { storeImg.map((item) => (
         <ShowImage id={item.id}
                    img={item.urls.small_s3}
                    urlFull={item.urls.full}

@@ -1,8 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { apiCall } from './apiCall';
 
-const initialState={
-  list:[]
+const initialState = {
+  list:[],
+  loading: false,
+  error: false
+
   }
 
 
@@ -23,9 +26,13 @@ const initialState={
       [imageAsync.fulfilled]: (state, action) => {
         console.log("Load completed");
         state.list = action.payload;
+        state.loading = false;
+        state.error = false;
       },
-      [imageAsync.rejected]: () => {
+      [imageAsync.rejected]: (state, action) => {
         console.log("Failure while fetching data!");
+        state.loading = false;
+        state.error = true;
       },
     },
   })

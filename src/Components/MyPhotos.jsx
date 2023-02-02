@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import Box from '@mui/material/Box';
-import {filterByDescription,filterBy} from '../features/favoriteSlice'
+import {filterByDescription} from '../features/favoriteSlice'
 import { useDispatch,useSelector } from 'react-redux';
 import TextField from '@mui/material/TextField';
 import Photo from './Photo'
@@ -13,6 +13,7 @@ import ImageList from '@mui/material/ImageList';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ilustration from '../Assets/Image viewer-amico.svg'
+
 
 const MyPhotos = () => {
   let {storeImg} =  useSelector((state) => state.favoriteImage);

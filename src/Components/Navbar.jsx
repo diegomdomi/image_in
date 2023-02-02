@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import imgDiaframe from '../Assets/1logo.png'
+import imgDiaframe from '../Assets/imgLogo-removebg.png'
 import { useLocation } from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({
@@ -67,17 +67,18 @@ const Navbar = () => {
             component="div"
             sx={{ flexGrow: 1, ml:{lg:10}}}
           >
-          {/* <div>
-            <p style={{fontFamily:'Teko', fontSize:'25px',letterSpacing:'1.5px'}}> image_surfing</p>
-          </div> */}
-          <Link to="/">
-            <img className='imgLogo' style={{width:'170px'}} src={imgDiaframe} alt='logo'/>
+          <Link to="/" style={{textDecoration:'none'}}>
+            <Box display={'flex'} flexDirection='row' alignItems='center' >
+              <img className='imgLogo'  src={imgDiaframe} alt='logo'/>
+              <p style={{fontFamily:'Teko', fontSize:'25px',letterSpacing:'1.8px',color:'white',marginLeft:'2px'}}> image_surfing</p>
+            </Box>
           </Link> 
+
           </Typography>
           <div className='navMenu'>
             <Link to={(mainRoute === '/') ? '/myphotos' : '/'} style={{textDecoration:'none'}}>
-              <Button  sx={{backgroundColor:'#f52246', color:'white', fontWeight:'bolder'}}>
-                <Typography  color="inherit" component="div">
+              <Button  sx={{backgroundColor:'#f52246', color:'white'}}>
+                <Typography   component="div">
                 {(mainRoute === '/') ? ' MY photos' : 'Menu'}
                 </Typography>
               </Button>

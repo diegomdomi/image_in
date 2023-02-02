@@ -29,7 +29,7 @@ const handleChangePage = (e, value) => {
 
   // useEffect(() => {
   //   dispatch(imageAsync(inputSearch))
-  //   },[inputSearch,page, dispatch])
+  //   }, [inputSearch,page, dispatch])
 
   return (
     <>

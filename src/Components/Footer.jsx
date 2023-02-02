@@ -5,8 +5,8 @@ import Box from '@mui/material/Box';
 import logo from '../Assets/imgLogo-removebg.png'
 export default function Footer() {
   return (
-    <Box sx={{ flexGrow: 1, }} >
-      <AppBar position="static" sx={{ bgcolor: '#f52246', height: 150,mt:10  }}>
+    <Box  >
+      <AppBar position="static" sx={{ bgcolor: ' #efb810',mt:5 }}>
       <Box justifyContent={'center'} alignItems='center' display={'flex'} flexDirection='column'
       sx={{
         margin:'40px 0px',

@@ -8,42 +8,31 @@ import { editDescription } from '../features/favoriteSlice';
 import { useDispatch } from 'react-redux';
 
 const ModalEditDescription = ({isOpen,closeModal,id}) => {
-    const [description, setDescription] = useState ()
+
+const [description, setDescription] = useState ()
 const dispatch = useDispatch()
 
 const registerChangeInput =(e)=>{
-    if(e.target.name === 'inputChange'){
-        setDescription(e.target.value)
+  if(e.target.name === 'inputChange'){
+      setDescription(e.target.value)
     }
-}
+  }
 
 const handleChangeDescription = (id,description)=>{
-    dispatch(editDescription({id,description}))
-    closeModal()
-
+  dispatch(editDescription({id,description}))
+  closeModal()
 }
   const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    // width: '400',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
   };
-  const stylemb = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '80%',
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+
   return (
     <div>
       <Modal
@@ -52,7 +41,7 @@ const handleChangeDescription = (id,description)=>{
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} xs={stylemb}>
+        <Box sx={style} >
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Edit description
           </Typography>

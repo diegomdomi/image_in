@@ -20,8 +20,10 @@ const initialState = {
     name:'imageStock',
     initialState,
     extraReducers: {
-      [imageAsync.pending]: () => {
+      [imageAsync.pending]: (state,action) => {
         console.log("Loading...");
+        state.loading = true;
+        state.error = false;
       },
       [imageAsync.fulfilled]: (state, action) => {
         console.log("Load completed");

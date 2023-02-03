@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search } from './Components/Search';
+import  Search  from './Components/Search';
 import SearchAppBar from './Components/Navbar.jsx';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import MyPhotos from './Components/MyPhotos.jsx';

@@ -8,14 +8,13 @@ import Pagination from '@mui/material/Pagination';
 import { useSelector } from 'react-redux';
 
 
-export const Search = () => {
+const Search = () => {
 
 const [inputSearch, setInputSearch] = useState(null)
+const [ value, setValue ] = useState(1);
 const dispatch = useDispatch();
 
-// const {loading, error} = useSelector(state => state.imageStock)
-
-const [ value, setValue ] = useState(1);
+const {loading, error} = useSelector(state => state.imageStock)
 
 const handleChangePage = (e, valu) => {
     dispatch(imageAsync({inputSearch,valu}))
@@ -34,7 +33,7 @@ const handleChangePage = (e, valu) => {
 
   useEffect(() => {
     dispatch(imageAsync({inputSearch,value}))
-    }, [inputSearch,value, dispatch])
+    }, [dispatch])
 
   return (
     <>
@@ -59,17 +58,17 @@ const handleChangePage = (e, valu) => {
       </Grid>
     </div>
     </Grid>
-    {
-
-    }
       <Render />
+    {
+      !loading && !error &&
       <Box justifyContent={'center'} alignItems='center' display={'flex'}
-      sx={{
-        margin:'20px 0px'
-      }}>
-      <Pagination page={value} onChange={handleChangePage} count={3} variant="outlined" color="primary" />
+        sx={{margin:'20px 0px'}}>
+      <Pagination page={value} onChange={handleChangePage} count={10} variant="outlined" color="primary" />
       </Box>
+    }
     </>
 
   );
 }
+
+export default Search

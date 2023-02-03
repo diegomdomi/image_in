@@ -20,6 +20,12 @@ const registerChangeInput =(e)=>{
     }
   }
 
+const handleSubmit = (e) => {
+  e.preventDefault();
+  dispatch(editDescription({id,description}))
+  closeModal()
+}
+
 const handleChangeDescription = (id,description)=>{
   dispatch(editDescription({id,description}))
   closeModal()
@@ -28,6 +34,7 @@ const handleChangeDescription = (id,description)=>{
     position: 'absolute',
     top: '50%',
     left: '50%',
+    width:{xs:'70%',sm:'45%',md:'20%',lg:'20%'},
     transform: 'translate(-50%, -50%)',
     bgcolor: 'background.paper',
     border: '2px solid #000',
@@ -46,11 +53,14 @@ const handleChangeDescription = (id,description)=>{
       <Box sx={style} display={'flex'} flexDirection='column' >
       <CloseIcon onClick={closeModal} sx={{mb:2}}/>
         <img src={img} alt={description} />
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" variant="h6" component="h2" sx={{mt:1}}>
             Edit description
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <input name='inputChange' onChange={registerChangeInput}></input>
+          <form onSubmit={handleSubmit}>
+
+            <input name='inputChange' onChange={registerChangeInput}/>
+          </form>
           <Button onClick={()=>handleChangeDescription(id,description)}>Confirm</Button>
           </Typography>
         </Box>

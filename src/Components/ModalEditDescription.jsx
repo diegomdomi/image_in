@@ -6,8 +6,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { editDescription } from '../features/favoriteSlice';
 import { useDispatch } from 'react-redux';
+import CloseIcon from '@mui/icons-material/Close';
 
-const ModalEditDescription = ({isOpen,closeModal,id}) => {
+
+const ModalEditDescription = ({isOpen,closeModal,id,img}) => {
 
 const [description, setDescription] = useState ()
 const dispatch = useDispatch()
@@ -41,7 +43,9 @@ const handleChangeDescription = (id,description)=>{
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} >
+      <Box sx={style} display={'flex'} flexDirection='column' >
+      <CloseIcon onClick={closeModal} sx={{mb:2}}/>
+        <img src={img} alt={description} />
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Edit description
           </Typography>

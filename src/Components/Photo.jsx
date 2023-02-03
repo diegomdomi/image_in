@@ -39,37 +39,35 @@ const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
   return (
     <div>
       <ImageListItem key={id} sx={{px:2}}>
-
         <Card sx={{marginTop:10,mb:{md:10,xs:1}}}>
-                  <CardMedia
-                    sx={{ height:300 }}
-                    image={img}
-                    id={id}
-                  />
-              <CardContent sx={{height:250}}>
-                <Typography variant="body1" color="text.secondary">
-                  <h5>{description}</h5> 
-                  <h4>width:  {width}  px</h4>
-                  <h4>height: {height} px</h4>
-                  <h4>{date}</h4>
-                  <h4><ThumbUpAltIcon/> {likes}</h4>
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Tooltip title="Edit Description">
-                  <Button size="small" onClick={editDescription}>Edit description</Button>
-                </Tooltip>
-                <Tooltip title="Download">
-                  <Button size="small"><CloudDownloadIcon  onClick={saveFile}/></Button>
-                </Tooltip>
-                <Tooltip title="Delete">
-                  <Button size="small" ><DeleteForeverIcon onClick={()=>deleteImage(id)}/></Button>
-                </Tooltip>
-              </CardActions>
-            <ModalEditDescription isOpen={isOpen} img={img}  closeModal={closeModal} id={id}/>
-            </Card>
-    </ImageListItem>
-
+            <CardMedia
+              sx={{ height:300 }}
+              image={img}
+              id={id}
+            />
+            <CardContent sx={{height:250}}>
+              <Typography variant="body1" color="text.secondary">
+                <h5>{description}</h5> 
+                <h4>width:  {width}  px</h4>
+                <h4>height: {height} px</h4>
+                <h4>{date}</h4>
+                <h4><ThumbUpAltIcon/> {likes}</h4>
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Tooltip title="Edit Description">
+                <Button size="small" onClick={editDescription}>Edit description</Button>
+              </Tooltip>
+              <Tooltip title="Download">
+                <Button size="small"><CloudDownloadIcon  onClick={saveFile}/></Button>
+              </Tooltip>
+              <Tooltip title="Delete">
+                <Button size="small" ><DeleteForeverIcon onClick={()=>deleteImage(id)}/></Button>
+              </Tooltip>
+            </CardActions>
+          <ModalEditDescription isOpen={isOpen} img={img}  closeModal={closeModal} id={id}/>
+        </Card>
+      </ImageListItem>
     </div>
   )
 }

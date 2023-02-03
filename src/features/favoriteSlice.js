@@ -47,10 +47,7 @@ export const storeImgSlice = createSlice({
                 } 
         },
 
-           
-                
     },
-
 })
 
 export default storeImgSlice.reducer

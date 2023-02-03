@@ -55,7 +55,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Navbar = () => {
 
   const location = useLocation();
-
   const mainRoute = location.pathname
 
   return (

@@ -24,10 +24,10 @@ const Render = () => {
   
   return (
     <> 
-      {storeImg.length === 0 &&
+    {storeImg.length === 0 &&
       <Box  sx={{ display: 'flex', flexDirection:'column' ,alignItems:'center',mt:5}} >
         <CircularProgress />
-       <p style={{marginLeft:'10px'}}>loading images</p>
+        <p style={{marginLeft:'10px'}}>loading images</p>
       </Box>}
     <ImageList
       gap={20}
@@ -47,6 +47,7 @@ const Render = () => {
                    userName={item.user.name}
                    likes={item.likes}
                    openModal={openModal}
+                   key={item.id}
         />
       ))}
     </ImageList>

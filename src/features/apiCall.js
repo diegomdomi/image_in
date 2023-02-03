@@ -3,7 +3,6 @@ const endPoint = process.env.REACT_APP_APIENDPOINT;
 const randomEndPoint = process.env.REACT_APP_RANDOMENDPOINT;
 
 export const apiCall = async(param) => {
-  console.log(param);
     try{
         if(!param.inputSearch || param.inputSearch === '' ){
           const response = await fetch(`${randomEndPoint}?client_id=${accesKey}&count=30`)

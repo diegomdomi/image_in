@@ -19,21 +19,23 @@ import Tooltip from '@mui/material/Tooltip';
 
 const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
 
-    const[isOpen, setIsOpen] = useState(false)
-    const dispatch = useDispatch()
+  const[isOpen, setIsOpen] = useState(false)
+  const dispatch = useDispatch()
 
-    const editDescription = () =>{
-        setIsOpen(true)
-    }
-    const closeModal =()=>setIsOpen(false)
-
-    const saveFile = () => {
-      saveAs(urlFull, `${id}.jpg`);
+  const editDescription = () =>{
+      setIsOpen(true)
   }
 
-    const deleteImage = (id) => {
+  const closeModal =()=>setIsOpen(false)
+
+  const saveFile = () => {
+    saveAs(urlFull, `${id}.jpg`);
+  }
+
+  const deleteImage = (id) => {
     dispatch(disLikePhoto(id))
   }
+  
   return (
     <div>
       <ImageListItem key={id} sx={{px:2}}>
@@ -44,16 +46,16 @@ const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
                     image={img}
                     id={id}
                   />
-                <CardContent sx={{height:250}}>
-                  <Typography variant="body1" color="text.secondary">
+              <CardContent sx={{height:250}}>
+                <Typography variant="body1" color="text.secondary">
                   <h5>{description}</h5> 
                   <h4>width:  {width}  px</h4>
                   <h4>height: {height} px</h4>
                   <h4>{date}</h4>
                   <h4><ThumbUpAltIcon/> {likes}</h4>
-                  </Typography>
-                </CardContent>
-                <CardActions>
+                </Typography>
+              </CardContent>
+              <CardActions>
                 <Tooltip title="Edit Description">
                   <Button size="small" onClick={editDescription}>Edit description</Button>
                 </Tooltip>
@@ -63,8 +65,7 @@ const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
                 <Tooltip title="Delete">
                   <Button size="small" ><DeleteForeverIcon onClick={()=>deleteImage(id)}/></Button>
                 </Tooltip>
-
-                </CardActions>
+              </CardActions>
             <ModalEditDescription isOpen={isOpen} img={img}  closeModal={closeModal} id={id}/>
             </Card>
     </ImageListItem>

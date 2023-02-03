@@ -6,9 +6,10 @@ import ShowImage from './ShowImage';
 import { useSelector } from 'react-redux';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 
 const Render = () => {
+
+  const storeImg= useSelector(state=>state.imageStock.list)
   
   const[propToModal, setPropToModal] = useState()
   const[isOpen, setIsOpen] = useState(false)
@@ -18,7 +19,8 @@ const Render = () => {
     setIsOpen(true)
   }
   const closeModal =()=>setIsOpen(false)
-  const storeImg= useSelector(state=>state.imageStock.list)
+  
+ 
   
   return (
     <> 

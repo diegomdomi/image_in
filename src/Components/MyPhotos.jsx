@@ -16,38 +16,35 @@ import ilustration from '../Assets/Image viewer-amico.svg'
 
 
 const MyPhotos = () => {
-  let {storeImg} =  useSelector((state) => state.favoriteImage);
+let {storeImg} =  useSelector((state) => state.favoriteImage);
 
-  const [orderBy, setOrderBy] = useState(storeImg);
-  const [option, setOption] = useState('');
+const [orderBy, setOrderBy] = useState(storeImg);
+const [option, setOption] = useState('');
 
-  useEffect(() => {
-    setOrderBy(storeImg)
-  },[storeImg])
+useEffect(() => {
+  setOrderBy(storeImg)
+},[storeImg])
   
-console.log(orderBy);
-  const dispatch = useDispatch()
+const dispatch = useDispatch()
 
-  const handleChange = (event) => {
+const handleChange = (event) => {
     
-    const sortDirection = event.target.value
-    setOption(sortDirection)
-    const newArr = [...orderBy]
+  const sortDirection = event.target.value
+  setOption(sortDirection)
+  const newArr = [...orderBy]
 
-    newArr.sort((a,b)=>{
-      if (sortDirection === 'date' ){
-       return  a.date - b.date
-      }else if (sortDirection === 'likes') {
-        return a.likes - b.likes
-
-      }else if(sortDirection === 'width') {
-        return a.width - b.width
-      }else if(sortDirection === 'height'){
-        return a.height - b.height
-      }
-    })
-    setOrderBy(newArr)
-    ;
+  newArr.sort((a,b)=>{
+    if (sortDirection === 'date' ){
+    return  a.date - b.date
+  }else if (sortDirection === 'likes') {
+    return a.likes - b.likes
+  }else if(sortDirection === 'width') {
+    return a.width - b.width
+  }else if(sortDirection === 'height'){
+    return a.height - b.height
+  }
+  })
+  setOrderBy(newArr)
   };
 
   const handleInputChange = (e) => {
@@ -56,16 +53,13 @@ console.log(orderBy);
     dispatch(filterByDescription(inputChange));
   }
 
-    if(inputChange=== '' || inputChange !== ''){
-      setOption('')
-    }
-   }
+  if(inputChange=== '' || inputChange !== ''){
+    setOption('')
+  }
+  }
  
-
   return (
     <>
-
-   
       <Box sx={{mt:20,ml:{xs:0,md:5}}}>
           <TextField  fullWidth label="search by description" id="fullWidth" style={{marginLeft:'55px',width:'60%'}}  color="secondary" name="searchDescription" 
             onChange={handleInputChange}

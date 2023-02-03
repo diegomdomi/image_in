@@ -53,6 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = () => {
+
   const location = useLocation();
 
   const mainRoute = location.pathname
@@ -73,7 +74,6 @@ const Navbar = () => {
               <p style={{fontFamily:'Teko', fontSize:'25px',letterSpacing:'1.8px',color:'white',marginLeft:'2px'}}> image_surfing</p>
             </Box>
           </Link> 
-
           </Typography>
           <div className='navMenu'>
             <Link to={(mainRoute === '/') ? '/myphotos' : '/'} style={{textDecoration:'none'}}>

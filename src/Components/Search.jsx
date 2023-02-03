@@ -31,6 +31,12 @@ const handleChangePage = (e, valu) => {
     dispatch(imageAsync({inputSearch,value}))
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(imageAsync({inputSearch,value}))
+  }
+  
+
   useEffect(() => {
     dispatch(imageAsync({inputSearch,value}))
     }, [dispatch])
@@ -51,8 +57,10 @@ const handleChangePage = (e, valu) => {
       <Grid item xs={12} sm={8} md={6}  sx={{mt:{sm:5,lg:17},ml:{sm:20 }}}>
         <Box m={5} >
       <div className="input-container">
+      <form onSubmit={handleSubmit}>
         <input className="inputSearch" placeholder="Search your image" name="searchImg" onChange={catchInputField}/>
-        <Button onClick={sendQuery} style={{backgroundColor:'#ffc300', color:'black', fontWeight:'bolder', marginLeft:'8px'}}  >surf</Button>
+      <Button onClick={sendQuery} style={{backgroundColor:'#ffc300', color:'black', fontWeight:'bolder', marginLeft:'8px'}}  >surf</Button>
+      </form>
       </div>
         </Box>
       </Grid>

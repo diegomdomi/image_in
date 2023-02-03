@@ -14,6 +14,8 @@ import ModalEditDescription from './ModalEditDescription';
 import { disLikePhoto } from '../features/favoriteSlice';
 import { useDispatch } from 'react-redux';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Tooltip from '@mui/material/Tooltip';
+
 
 const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
 
@@ -52,13 +54,16 @@ const Photo = ({id,likes,img,width,height,description,date,urlFull}) => {
                   </Typography>
                 </CardContent>
                 <CardActions>
+                <Tooltip title="Edit Description">
                   <Button size="small" onClick={editDescription}>Edit description</Button>
-                  <Button size="small">
-                  <CloudDownloadIcon  onClick={saveFile}/>
-                  </Button>
-                  <Button size="small" >
-                  <DeleteForeverIcon onClick={()=>deleteImage(id)}/>
-                  </Button>
+                </Tooltip>
+                <Tooltip title="Download">
+                  <Button size="small"><CloudDownloadIcon  onClick={saveFile}/></Button>
+                </Tooltip>
+                <Tooltip title="Delete">
+                  <Button size="small" ><DeleteForeverIcon onClick={()=>deleteImage(id)}/></Button>
+                </Tooltip>
+
                 </CardActions>
             <ModalEditDescription isOpen={isOpen} img={img}  closeModal={closeModal} id={id}/>
             </Card>

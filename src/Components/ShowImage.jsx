@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import Tooltip from '@mui/material/Tooltip';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -58,14 +59,18 @@ const ShowImage = ({id,img,alt_description,width,height,imgAvatar,userName,openM
         onClick={() =>openModal(img,alt_description,imgAvatar,userName)}
       />
       <ImageListItemBar
-      // title={alt_description}
+      title={alt_description}
       actionIcon={
       <IconButton
         sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
       >
-      <CloudDownloadIcon onClick={saveFile} />
+      <Tooltip title="Download">
+        <CloudDownloadIcon onClick={saveFile} />
+      </Tooltip>
       <Button  onClick={() =>sendToStore(id,img,alt_description,width,height,likes,urlFull)} className="like">
-      <FavoriteBorderIcon  sx={{ color: 'red' }}/>
+      <Tooltip title="Like">
+        <FavoriteBorderIcon  sx={{ color: 'red' }}/>
+      </Tooltip>
       </Button>
       </IconButton>
       }

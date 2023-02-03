@@ -58,7 +58,6 @@ const handleChangeDescription = (id,description)=>{
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           <form onSubmit={handleSubmit}>
-
             <input name='inputChange' onChange={registerChangeInput}/>
           </form>
           <Button onClick={()=>handleChangeDescription(id,description)}>Confirm</Button>
